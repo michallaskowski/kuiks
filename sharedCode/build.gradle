@@ -1,0 +1,46 @@
+apply plugin: 'kotlin-multiplatform'
+
+kotlin {
+    final def buildForDevice = project.findProperty("device")?.toBoolean() ?: false
+
+    targets {
+        final def iOSTarget = buildForDevice ? presets.iosArm64 : presets.iosX64
+
+        fromPreset(iOSTarget, 'iOS') {
+            binaries {
+                framework {
+                    baseName = "kuiks"
+                    if (!buildForDevice) {
+                        embedBitcode("disable")
+                    }
+                }
+            }
+            compilations.main {
+                cinterops {
+                    xctest {
+                        defFile project.file("src/iosMain/xctest.def")
+                    }
+                }
+            }
+        }
+
+        fromPreset(presets.jvm, 'android')
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+        }
+
+        androidMain.dependencies {
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+            implementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+            implementation 'org.junit.jupiter:junit-jupiter-params:5.3.2'
+
+            implementation 'androidx.test.espresso:espresso-core:3.1.0'
+        }
+
+        iOSMain.dependencies {
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sharedCode-android">
+    <output-path>$PROJECT_DIR$/sharedCode/build/libs</output-path>
+    <root id="archive" name="sharedCode-android.jar">
+      <element id="module-output" name="sharedCode_androidMain" />
+    </root>
+  </artifact>
+</component>
