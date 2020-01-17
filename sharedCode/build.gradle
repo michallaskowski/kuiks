@@ -1,5 +1,9 @@
 apply plugin: 'kotlin-multiplatform'
 
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+
 kotlin {
     final def buildForDevice = project.findProperty("device")?.toBoolean() ?: false
 

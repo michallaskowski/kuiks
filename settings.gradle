@@ -1,3 +1,5 @@
-include ':sharedCode'
+include ':kuiks'
+project(':kuiks').projectDir = file('./sharedCode')
+
 
 enableFeaturePreview('GRADLE_METADATA')
