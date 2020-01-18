@@ -15,3 +15,7 @@ interface Application: AppElement {
 
 @Target(AnnotationTarget.FUNCTION)
 annotation class iOSTest
+
+expect class ApplicationWrapper: Application {
+
+}

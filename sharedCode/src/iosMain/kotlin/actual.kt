@@ -33,7 +33,9 @@ class UIElementWrapper(val element: XCUIElement): AppElement {
         get() = element.debugDescription()
 }
 
-class ApplicationWrapper(val app: XCUIApplication): Application {
+actual class ApplicationWrapper: Application {
+    private val app: XCUIApplication = XCUIApplication()
+
     override fun launch() {
         app.launch()
     }
