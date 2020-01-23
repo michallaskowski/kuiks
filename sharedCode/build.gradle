@@ -1,10 +1,38 @@
 apply plugin: 'kotlin-multiplatform'
-
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'com.android.library'
 
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion = '29.0.2'
+
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+            java.srcDirs("src/androidMain/kotlin")
+            res.srcDirs("src/androidMain/res")
+        }
+    }
+}
 
 kotlin {
+    android {
+        publishLibraryVariants("release", "debug")
+    }
+
     final def buildForDevice = project.findProperty("device")?.toBoolean() ?: false
 
     targets {
@@ -28,7 +56,7 @@ kotlin {
             }
         }
 
-        fromPreset(presets.jvm, 'android')
+        fromPreset(presets.android, 'android')
     }
 
     sourceSets {
@@ -41,7 +69,8 @@ kotlin {
             implementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
             implementation 'org.junit.jupiter:junit-jupiter-params:5.3.2'
 
-            implementation 'androidx.test.espresso:espresso-core:3.1.0'
+            implementation 'androidx.test.espresso:espresso-core:3.2.0'
+            implementation 'androidx.test.espresso:espresso-contrib:3.2.0'
         }
 
         iOSMain.dependencies {
