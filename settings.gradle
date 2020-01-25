@@ -1,4 +1,7 @@
 include ':kuiks-core'
 project(':kuiks-core').projectDir = file('./sharedCode')
 
+include ':sample-sharedTests'
+include ':sample-android'
+
 enableFeaturePreview('GRADLE_METADATA')

@@ -8,6 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/sample-android" />
+            <option value="$PROJECT_DIR$/sample-sharedTests" />
             <option value="$PROJECT_DIR$/sharedCode" />
           </set>
         </option>
