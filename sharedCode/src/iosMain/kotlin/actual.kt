@@ -2,6 +2,8 @@ package com.laskowski.kuiks
 
 import platform.XCTest.*
 
+actual val platform: Platform = Platform.iOS
+
 class UIElementWrapper(val element: XCUIElement): AppElement {
     override fun tap() {
         element.tap()
@@ -33,7 +35,8 @@ class UIElementWrapper(val element: XCUIElement): AppElement {
         get() = element.debugDescription()
 }
 
-actual class ApplicationWrapper: Application {
+actual class ApplicationWrapper actual constructor(identifier: String) : Application {
+
     private val app: XCUIApplication = XCUIApplication()
 
     override fun launch() {

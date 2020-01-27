@@ -10,6 +10,8 @@ import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 
+actual val platform: Platform = Platform.Android
+
 class ElementWrapper(val matcher: Matcher<View>): AppElement {
     override fun tap() {
         Espresso.onView(matcher).perform(ViewActions.click())
@@ -42,7 +44,7 @@ class ElementWrapper(val matcher: Matcher<View>): AppElement {
 
 }
 
-actual class ApplicationWrapper(private val identifier: String): Application {
+actual class ApplicationWrapper actual constructor(private val identifier: String): Application {
     override fun launch() {
         // based on https://github.com/appium/appium-espresso-driver/blob/05ccf5a7fa440bfee96400b52672287458676dfa/espresso-server/app/src/androidTest/java/io/appium/espressoserver/lib/helpers/ActivityHelper.kt
         val instrumentation = InstrumentationRegistry.getInstrumentation()

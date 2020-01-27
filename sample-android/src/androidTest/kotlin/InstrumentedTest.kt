@@ -16,6 +16,6 @@ class ExampleInstrumentedTest {
 
     @Test
     fun runSharedTest() {
-        TestExample().testOne(ApplicationWrapper("MainActivity"))
+        TestExample().testOne()
     }
 }

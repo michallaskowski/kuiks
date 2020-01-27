@@ -16,6 +16,10 @@ interface Application: AppElement {
 @Target(AnnotationTarget.FUNCTION)
 annotation class iOSTest
 
-expect class ApplicationWrapper: Application {
+expect class ApplicationWrapper(identifier: String): Application
 
+enum class Platform {
+    iOS, Android
 }
+
+expect val platform: Platform
