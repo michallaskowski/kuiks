@@ -53,11 +53,14 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+            implementation "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
             api project(':kuiks-core')
         }
 
         androidMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+            // TODO: try https://github.com/Foso/MpApt for annotations on all targets
+            implementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
         }
     }
 }
