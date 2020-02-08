@@ -1,3 +1,4 @@
+import dev.michallaskowski.kuiks.sample.sharedTests.TestExample
 import junit.framework.Test
 import junit.framework.TestResult
 import junit.framework.TestSuite
