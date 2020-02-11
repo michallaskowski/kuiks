@@ -7,14 +7,50 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "TestBase.h"
+#include "TestBaseForSelector.h"
 #import "objc/runtime.h"
 
 @implementation TestBaseForSelector
 
-+ (XCTestCase *)testCaseForSelector:(SEL)selector {
-    XCTFail("This method should be overriden");
++(Class)testClass {
+    // needs to be overriden
     return nil;
+}
+
++ (XCTestCase *)testCaseForSelector:(SEL)selector {
+    // needs to be overriden
+    return nil;
+}
+
++ (NSArray<NSString *> *)registerTestMethods {
+    // needs to be overriden
+    return @[];
+}
+
++(instancetype)init {
+    return [super init];
+}
+
++(instancetype)testCaseWithInvocation:(NSInvocation *)invocation {
+    return [super testCaseWithInvocation:invocation];
+}
+
+// added because otherwise main test button does not find tests
++(NSArray<NSInvocation *> *)testInvocations {
+    Class testClass = [self testClass];
+    if (testClass == nil) {
+        return @[];
+    }
+    NSArray<NSString *> *stringSelectors = [self registerTestMethods];
+
+    NSMutableArray<NSInvocation *> *invocations = [NSMutableArray arrayWithCapacity:[stringSelectors count]];
+    for (NSString *stringSelector in stringSelectors) {
+        SEL selector = NSSelectorFromString(stringSelector);
+        NSMethodSignature *methodSignature = [testClass instanceMethodSignatureForSelector:selector];
+        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        [invocations addObject:invocation];
+    }
+    return invocations;
 }
 
 /**

@@ -10,10 +10,16 @@
 #define TestBase_h
 @import XCTest;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TestBaseForSelector : XCTestCase
 
++(NSArray<NSString *> *) registerTestMethods;
++(Class)testClass;
 +(XCTestCase *)testCaseForSelector:(SEL)selector;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* TestBase_h */

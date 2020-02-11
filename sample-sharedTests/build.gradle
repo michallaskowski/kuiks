@@ -42,6 +42,8 @@ kotlin {
                     baseName = "sharedTests"
                     transitiveExport = true
                     export project(':kuiks-core')
+
+//                    linkerOpts += ['-framework', 'UIKit', '-framework', 'XCTest']
                 }
             }
         }
@@ -57,9 +59,30 @@ kotlin {
             api project(':kuiks-core')
         }
 
+        commonTest {
+            kotlin.srcDir("src/commonMain/kotlin")
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
+            }
+        }
+
         androidMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib'
             implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+        }
+    }
+}
+
+task iosTest {
+    def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
+    dependsOn 'linkDebugTestIOSSimulator'
+    group = JavaBasePlugin.VERIFICATION_GROUP
+    description = "Runs tests for target 'ios' on an iOS simulator"
+
+    doLast {
+        def binary = kotlin.targets.iOSSimulator.binaries.getTest('DEBUG').outputFile
+        exec {
+            commandLine 'xcrun', 'simctl', 'spawn',  '--standalone', device, binary.absolutePath
         }
     }
 }

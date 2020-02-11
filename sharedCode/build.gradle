@@ -50,6 +50,7 @@ kotlin {
             compilations.main {
                 cinterops {
                     xctest {
+                        // xctest.def require Xcode or symlink to be at /Applications/Xcode.app
                         defFile project.file("src/iosMain/xctest.def")
                     }
                 }

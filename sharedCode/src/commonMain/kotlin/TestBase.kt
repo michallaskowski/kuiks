@@ -1,3 +1,3 @@
 package com.laskowski.kuiks
 
-expect TestBase
+expect open class TestBase()

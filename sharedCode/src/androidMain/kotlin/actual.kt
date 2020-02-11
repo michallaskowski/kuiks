@@ -10,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 
+actual typealias TestBase = Any
 actual val platform: Platform = Platform.Android
 
 class ElementWrapper(val matcher: Matcher<View>): AppElement {
