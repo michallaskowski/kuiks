@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "438A7AD9-CA5E-49E2-8DEB-DB4FE37871F8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SampleiOS.xcodeproj",
+      "identifier" : "C141B62423EF0AAB003AAE22",
+      "name" : "SampleiOS"
+    }
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "TestBase",
+        "TestBaseForSelector"
+      ],
+      "target" : {
+        "containerPath" : "container:SampleiOS.xcodeproj",
+        "identifier" : "C157090E23EF4E37003481FB",
+        "name" : "SampleiOSUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
