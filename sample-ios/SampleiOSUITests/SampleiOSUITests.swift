@@ -3,16 +3,10 @@
 import XCTest
 import sharedTests
 
-class SampleiOSUITests: TestBase<TestExample> {
+class SampleiOSUITests: DeferringTestBase {
     override func setUp() {
         continueAfterFailure = false
     }
-//
-//    override class func testClass() -> AnyClass! {
-//        return TestExample.self
-//    }
 
-    func testDupa() {
-        print("Dupa")
-    }
+    override class func testClass() -> AnyClass { TestExample.self }
 }

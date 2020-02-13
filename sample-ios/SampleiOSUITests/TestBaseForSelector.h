@@ -14,9 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestBaseForSelector : XCTestCase
 
-+(NSArray<NSString *> *) registerTestMethods;
-+(Class)testClass;
-+(XCTestCase *)testCaseForSelector:(SEL)selector;
++(void)registerTestFor:(SEL)selector;
 
 @end
 
