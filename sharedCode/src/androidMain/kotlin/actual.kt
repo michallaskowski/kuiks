@@ -2,10 +2,12 @@ package com.laskowski.kuiks
 
 import android.content.Intent
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
@@ -27,12 +29,13 @@ class ElementWrapper(val matcher: Matcher<View>): AppElement {
     }
 
     override fun table(withId: String): AppElement {
-
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun cell(withId: String): AppElement {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val cellMatcher = ViewMatchers.withContentDescription(withId)
+        Espresso.onView(matcher).perform(RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(cellMatcher))
+        return ElementWrapper(cellMatcher)
     }
 
     override fun waitForExistence(timeout: Double) {

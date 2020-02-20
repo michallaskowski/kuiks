@@ -2,12 +2,9 @@ package dev.michallaskowski.kuiks.sample.android
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
-import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_list.*
@@ -23,9 +20,13 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
 
+        val values = (1..99).map {
+            "${it}"
+        }
+
         viewManager = LinearLayoutManager(this)
-        viewAdapter = MyAdapter(arrayOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")) {
-            if (it == "one" || it == "nine") {
+        viewAdapter = MyAdapter(values) {
+            if (it == "1" || it == "99") {
                 finish()
             }
         }
@@ -40,7 +41,7 @@ class ListActivity : AppCompatActivity() {
 
 internal typealias OnItemClickListener = (String) -> Unit
 
-class MyAdapter(private val myDataset: Array<String>, val itemClickListener: OnItemClickListener) :
+class MyAdapter(private val myDataset: List<String>, val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -68,6 +69,7 @@ class MyAdapter(private val myDataset: Array<String>, val itemClickListener: OnI
         holder.textView.setOnClickListener {
             itemClickListener(text)
         }
+        holder.textView.contentDescription = text
     }
 
     // Return the size of your dataset (invoked by the layout manager)

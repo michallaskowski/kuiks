@@ -18,4 +18,9 @@ class ExampleInstrumentedTest {
     fun runSharedTest() {
         TestExample().testOne()
     }
+
+    @Test
+    fun runTestList() {
+        TestExample().testListWithScrolling()
+    }
 }

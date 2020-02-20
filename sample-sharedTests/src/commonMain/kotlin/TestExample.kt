@@ -20,4 +20,28 @@ open class TestExample {
     fun testEmpty() {
 
     }
+
+    @Test
+    fun testListWithoutScrolling() {
+        val app = ApplicationWrapper(identifier)
+        app.launch()
+
+        app.elementWithTestId("show_list").tap()
+        app.elementWithTestId("1").tap()
+
+        app.elementWithTestId("show_list").waitForExistence(1.0)
+    }
+
+    @Test
+    fun testListWithScrolling() {
+        val app = ApplicationWrapper(identifier)
+        app.launch()
+
+        app.elementWithTestId("show_list").tap()
+        val list = app.table("list")
+
+        list.cell("99").tap()
+
+        app.elementWithTestId("show_list").waitForExistence(1.0)
+    }
 }
