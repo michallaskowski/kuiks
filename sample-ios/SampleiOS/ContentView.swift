@@ -8,9 +8,16 @@
 
 import SwiftUI
 
+// navigation works once on simulators till xcode11.4
+// https://stackoverflow.com/questions/59279176/navigationlink-works-only-for-once
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            NavigationLink(destination: ListView()) {
+                Text("Go to List").accessibility(identifier: "show_list")
+            }
+        }
     }
 }
 

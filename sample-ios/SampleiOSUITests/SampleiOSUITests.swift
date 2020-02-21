@@ -3,7 +3,7 @@
 import XCTest
 import sharedTests
 
-class SampleiOSUITests: DeferringTestBase {
+final class SampleiOSUITests: DeferringTestBase {
     override func setUp() {
         continueAfterFailure = false
     }

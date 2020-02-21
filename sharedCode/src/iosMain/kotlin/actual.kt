@@ -18,7 +18,8 @@ class UIElementWrapper(val element: XCUIElement): AppElement {
     }
 
     override fun cell(withId: String): AppElement {
-        return elementWith(withId, XCUIElementTypeCell)
+        val query = element.cells.elementMatchingType(XCUIElementTypeCell, withId)
+        return UIElementWrapper(query)
     }
 
     override fun waitForExistence(timeout: Double) {
