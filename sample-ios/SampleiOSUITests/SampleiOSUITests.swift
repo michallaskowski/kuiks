@@ -1,6 +1,5 @@
 //  Copyright © 2020 Michal Laskowski. All rights reserved.
 
-import XCTest
 import sharedTests
 
 final class SampleiOSUITests: DeferringTestBase {

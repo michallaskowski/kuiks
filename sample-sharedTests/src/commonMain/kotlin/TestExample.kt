@@ -27,7 +27,9 @@ open class TestExample {
         app.launch()
 
         app.elementWithTestId("show_list").tap()
-        app.elementWithTestId("1").tap()
+
+        val list = app.table("list")
+        list.cell("1").tap()
 
         app.elementWithTestId("show_list").waitForExistence(1.0)
     }
@@ -38,8 +40,8 @@ open class TestExample {
         app.launch()
 
         app.elementWithTestId("show_list").tap()
-        val list = app.table("list")
 
+        val list = app.table("list")
         list.cell("99").tap()
 
         app.elementWithTestId("show_list").waitForExistence(1.0)

@@ -10,7 +10,7 @@ extension Int: Identifiable {
 }
 
 struct ListView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var didTapBack: (() -> Void)?
 
     private let numbers: [Int] = Array(1...99)
 
@@ -19,7 +19,7 @@ struct ListView: View {
             Text("\(number)").accessibility(identifier: "\(number)")
                 .onTapGesture {
                     if number == 1 || number == 99 {
-                        self.presentationMode.wrappedValue.dismiss()
+                        self.didTapBack?()
                     }
             }
         }.accessibility(identifier: "list")

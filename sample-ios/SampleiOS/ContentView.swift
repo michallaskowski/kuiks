@@ -12,12 +12,15 @@ import SwiftUI
 // https://stackoverflow.com/questions/59279176/navigationlink-works-only-for-once
 
 struct ContentView: View {
+    var didTapList: (() -> Void)?
+
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: ListView()) {
-                Text("Go to List").accessibility(identifier: "show_list")
-            }
-        }
+        Button(action: {
+            self.didTapList?()
+        }, label: {
+            Text("Go to list")
+        }).accessibility(identifier: "show_list")
+
     }
 }
 
