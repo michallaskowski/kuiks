@@ -19,7 +19,7 @@
 		C157091C23EF6050003481FB /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C157091B23EF6050003481FB /* sharedTests.framework */; };
 		C157091E23EF61E0003481FB /* sharedTests.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C157091B23EF6050003481FB /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C157092823F1FD75003481FB /* TestBaseForSelector.m */; };
-		C157092B23F1FEB1003481FB /* DeferringTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157092A23F1FEB1003481FB /* DeferringTestBase.swift */; };
+		C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,7 @@
 		C157092123F0BE5C003481FB /* SampleiOSUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleiOSUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C157092723F1FD67003481FB /* TestBaseForSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBaseForSelector.h; sourceTree = "<group>"; };
 		C157092823F1FD75003481FB /* TestBaseForSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBaseForSelector.m; sourceTree = "<group>"; };
-		C157092A23F1FEB1003481FB /* DeferringTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferringTestBase.swift; sourceTree = "<group>"; };
+		C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingTestBase.swift; sourceTree = "<group>"; };
 		C1E7FC7223F3448900B11BA3 /* SampleiOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SampleiOS.xctestplan; path = SampleiOS.xcodeproj/SampleiOS.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +138,7 @@
 				C157092123F0BE5C003481FB /* SampleiOSUITests-Bridging-Header.h */,
 				C157092723F1FD67003481FB /* TestBaseForSelector.h */,
 				C157092823F1FD75003481FB /* TestBaseForSelector.m */,
-				C157092A23F1FEB1003481FB /* DeferringTestBase.swift */,
+				C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */,
 			);
 			path = SampleiOSUITests;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */,
-				C157092B23F1FEB1003481FB /* DeferringTestBase.swift in Sources */,
+				C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */,
 				C157091223EF4E37003481FB /* SampleiOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

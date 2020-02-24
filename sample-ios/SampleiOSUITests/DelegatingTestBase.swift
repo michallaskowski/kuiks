@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeferringTestBase: TestBaseForSelector {
+class DelegatingTestBase: TestBaseForSelector {
 
     // needs to be overriden to return class implementing test methods
     class func testClass() -> AnyClass {

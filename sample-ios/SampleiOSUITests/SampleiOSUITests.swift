@@ -2,7 +2,7 @@
 
 import sharedTests
 
-final class SampleiOSUITests: DeferringTestBase {
+final class SampleiOSUITests: DelegatingTestBase {
     override func setUp() {
         continueAfterFailure = false
     }
