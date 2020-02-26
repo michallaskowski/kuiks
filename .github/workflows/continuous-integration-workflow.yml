@@ -1,0 +1,20 @@
+name: Run tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ios_tests:
+    name: iOS Tests
+    runs-on:  macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Select Xcode 11.3
+        run: sudo xcode-select -s /Applications/Xcode_11.3.app
+      - name: Tests
+        run: xcodebuild -project sample-ios/SampleiOS.xcodeproj -scheme SampleiOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' test | xcpretty
