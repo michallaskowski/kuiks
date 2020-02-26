@@ -1,3 +1,5 @@
+![](https://github.com/michallaskowski/kuiks/workflows/Run%20tests/badge.svg?branch=master)
+
 # Kuiks
 
 ## What is it
