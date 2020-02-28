@@ -8,6 +8,18 @@ on:
       - master
 
 jobs:
+  android_tests:
+    name: Android tests
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew sample-android:connectedCheck -Pandroid.testInstrumentationRunnerArguments.class=InheritedTests
+
   ios_tests:
     name: iOS Tests
     runs-on:  macOS-latest

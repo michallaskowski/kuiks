@@ -67,8 +67,6 @@ kotlin {
 
         androidMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-            implementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
-            implementation 'org.junit.jupiter:junit-jupiter-params:5.3.2'
 
             implementation 'androidx.test.espresso:espresso-core:3.2.0'
             implementation 'androidx.test.espresso:espresso-contrib:3.2.0'
