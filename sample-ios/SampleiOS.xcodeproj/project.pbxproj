@@ -18,8 +18,8 @@
 		C157091223EF4E37003481FB /* SampleiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157091123EF4E37003481FB /* SampleiOSUITests.swift */; };
 		C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C157092823F1FD75003481FB /* TestBaseForSelector.m */; };
 		C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */; };
-		C17070AC24278F8300A35D8A /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17070AB24278F8300A35D8A /* sharedTests.framework */; };
-		C19368482427A9E800F588D5 /* sharedTests.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = C17070AB24278F8300A35D8A /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1B229E324297D580038C011 /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B229E224297D580038C011 /* sharedTests.framework */; };
+		C1B229E424297D610038C011 /* sharedTests.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = C1B229E224297D580038C011 /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C19368482427A9E800F588D5 /* sharedTests.framework in Copy Files */,
+				C1B229E424297D610038C011 /* sharedTests.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +64,7 @@
 		C157092723F1FD67003481FB /* TestBaseForSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBaseForSelector.h; sourceTree = "<group>"; };
 		C157092823F1FD75003481FB /* TestBaseForSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBaseForSelector.m; sourceTree = "<group>"; };
 		C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingTestBase.swift; sourceTree = "<group>"; };
-		C17070AB24278F8300A35D8A /* sharedTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sharedTests.framework; sourceTree = "<group>"; };
+		C1B229E224297D580038C011 /* sharedTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sharedTests.framework; path = "../sample-sharedTests/build/fat-framework/sharedTests.framework"; sourceTree = "<group>"; };
 		C1E7FC7223F3448900B11BA3 /* SampleiOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SampleiOS.xctestplan; path = SampleiOS.xcodeproj/SampleiOS.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C17070AC24278F8300A35D8A /* sharedTests.framework in Frameworks */,
+				C1B229E324297D580038C011 /* sharedTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 		C157091A23EF604F003481FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C17070AB24278F8300A35D8A /* sharedTests.framework */,
+				C1B229E224297D580038C011 /* sharedTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$PROJECT_DIR/..\"\nrm -rf $PROJECT_DIR/sharedTests.framework\nif [ \"$ARCHS\" = \"x86_64\" ]\nthen\n  ./gradlew :sample-sharedTests:linkDebugFrameworkIOSX64\n  cp -r sample-sharedTests/build/bin/iOSX64/debugFramework/sharedTests.framework $PROJECT_DIR/sharedTests.framework\nelif [ \"$ARCHS\" = \"arm64\" ]\nthen\n  ./gradlew :sample-sharedTests:linkDebugFrameworkIOSArm64\n  cp -r sample-sharedTests/build/bin/iOSArm64/debugFramework/sharedTests.framework $PROJECT_DIR/sharedTests.framework\nelse\n  echo \"error: Not supported architecture: $ARCHS\"\nfi\n";
+			shellScript = "cd \"$PROJECT_DIR/..\"\n./gradlew sample-sharedTests:fatDebugFramework\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -484,7 +484,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../sample-sharedTests/build/fat-framework/",
+				);
 				INFOPLIST_FILE = SampleiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,7 +514,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../sample-sharedTests/build/fat-framework/",
+				);
 				INFOPLIST_FILE = SampleiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

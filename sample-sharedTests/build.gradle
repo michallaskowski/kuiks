@@ -61,16 +61,10 @@ kotlin {
     }
 }
 
-task iosTest {
-    def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
-    dependsOn 'linkDebugTestIOSX64'
-    group = JavaBasePlugin.VERIFICATION_GROUP
-    description = "Runs tests for target 'ios' on an iOS simulator"
-
-    doLast {
-        def binary = kotlin.targets.iOSSimulator.binaries.getTest('DEBUG').outputFile
-        exec {
-            commandLine 'xcrun', 'simctl', 'spawn',  '--standalone', device, binary.absolutePath
-        }
-    }
+task fatDebugFramework(type: org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask) {
+    baseName = "sharedTests"
+    from(
+            kotlin.targets.iOSX64.binaries.getFramework("DEBUG"),
+            kotlin.targets.iOSArm64.binaries.getFramework("DEBUG")
+    )
 }
