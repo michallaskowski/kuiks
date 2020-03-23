@@ -28,26 +28,17 @@ android {
 
 kotlin {
     targets {
-        fromPreset(presets.iosArm64, 'iOS') {
+        ios('iOS') {
             binaries {
                 framework {
                     baseName = "sharedTests"
-                }
-            }
-        }
+                    embedBitcode("disable")
 
-        fromPreset(presets.iosX64, 'iOSSimulator') {
-            binaries {
-                framework {
-                    baseName = "sharedTests"
                     transitiveExport = true
                     export project(':kuiks-core')
-
-//                    linkerOpts += ['-framework', 'UIKit', '-framework', 'XCTest']
                 }
             }
         }
-
 
         fromPreset(presets.android, 'android')
     }
@@ -59,11 +50,8 @@ kotlin {
             api project(':kuiks-core')
         }
 
-        commonTest {
-            kotlin.srcDir("src/commonMain/kotlin")
-            dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
-            }
+        iOSMain.dependencies {
+            api project(':kuiks-core')
         }
 
         androidMain.dependencies {
@@ -75,7 +63,7 @@ kotlin {
 
 task iosTest {
     def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
-    dependsOn 'linkDebugTestIOSSimulator'
+    dependsOn 'linkDebugTestIOSX64'
     group = JavaBasePlugin.VERIFICATION_GROUP
     description = "Runs tests for target 'ios' on an iOS simulator"
 

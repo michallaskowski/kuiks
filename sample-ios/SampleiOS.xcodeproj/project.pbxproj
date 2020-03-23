@@ -16,10 +16,10 @@
 		C141B63223EF0AAE003AAE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C141B63123EF0AAE003AAE22 /* Preview Assets.xcassets */; };
 		C141B63523EF0AAE003AAE22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C141B63323EF0AAE003AAE22 /* LaunchScreen.storyboard */; };
 		C157091223EF4E37003481FB /* SampleiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157091123EF4E37003481FB /* SampleiOSUITests.swift */; };
-		C157091C23EF6050003481FB /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C157091B23EF6050003481FB /* sharedTests.framework */; };
-		C157091E23EF61E0003481FB /* sharedTests.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C157091B23EF6050003481FB /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C157092823F1FD75003481FB /* TestBaseForSelector.m */; };
 		C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */; };
+		C17070AC24278F8300A35D8A /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17070AB24278F8300A35D8A /* sharedTests.framework */; };
+		C19368482427A9E800F588D5 /* sharedTests.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = C17070AB24278F8300A35D8A /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,14 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C157091D23EF61D4003481FB /* CopyFiles */ = {
+		C157091D23EF61D4003481FB /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C157091E23EF61E0003481FB /* sharedTests.framework in CopyFiles */,
+				C19368482427A9E800F588D5 /* sharedTests.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -59,11 +60,11 @@
 		C157090F23EF4E37003481FB /* SampleiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C157091123EF4E37003481FB /* SampleiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleiOSUITests.swift; sourceTree = "<group>"; };
 		C157091323EF4E37003481FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C157091B23EF6050003481FB /* sharedTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sharedTests.framework; path = "../sample-sharedTests/build/bin/iOSSimulator/debugFramework/sharedTests.framework"; sourceTree = "<group>"; };
 		C157092123F0BE5C003481FB /* SampleiOSUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleiOSUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C157092723F1FD67003481FB /* TestBaseForSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBaseForSelector.h; sourceTree = "<group>"; };
 		C157092823F1FD75003481FB /* TestBaseForSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBaseForSelector.m; sourceTree = "<group>"; };
 		C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingTestBase.swift; sourceTree = "<group>"; };
+		C17070AB24278F8300A35D8A /* sharedTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sharedTests.framework; sourceTree = "<group>"; };
 		C1E7FC7223F3448900B11BA3 /* SampleiOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SampleiOS.xctestplan; path = SampleiOS.xcodeproj/SampleiOS.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C157091C23EF6050003481FB /* sharedTests.framework in Frameworks */,
+				C17070AC24278F8300A35D8A /* sharedTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +147,7 @@
 		C157091A23EF604F003481FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C157091B23EF6050003481FB /* sharedTests.framework */,
+				C17070AB24278F8300A35D8A /* sharedTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,11 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C157091623EF4E37003481FB /* Build configuration list for PBXNativeTarget "SampleiOSUITests" */;
 			buildPhases = (
-				C157091923EF59AC003481FB /* ShellScript */,
+				C157091923EF59AC003481FB /* Build sharedTests frameworks */,
 				C157090B23EF4E37003481FB /* Sources */,
 				C157090C23EF4E37003481FB /* Frameworks */,
 				C157090D23EF4E37003481FB /* Resources */,
-				C157091D23EF61D4003481FB /* CopyFiles */,
+				C157091D23EF61D4003481FB /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -251,7 +252,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C157091923EF59AC003481FB /* ShellScript */ = {
+		C157091923EF59AC003481FB /* Build sharedTests frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,13 +261,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Build sharedTests frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$PROJECT_DIR/..\"\n./gradlew :sample-sharedTests:linkDebugFrameworkIOSSimulator\n";
+			shellScript = "cd \"$PROJECT_DIR/..\"\nrm -rf $PROJECT_DIR/sharedTests.framework\nif [ \"$ARCHS\" = \"x86_64\" ]\nthen\n  ./gradlew :sample-sharedTests:linkDebugFrameworkIOSX64\n  cp -r sample-sharedTests/build/bin/iOSX64/debugFramework/sharedTests.framework $PROJECT_DIR/sharedTests.framework\nelif [ \"$ARCHS\" = \"arm64\" ]\nthen\n  ./gradlew :sample-sharedTests:linkDebugFrameworkIOSArm64\n  cp -r sample-sharedTests/build/bin/iOSArm64/debugFramework/sharedTests.framework $PROJECT_DIR/sharedTests.framework\nelse\n  echo \"error: Not supported architecture: $ARCHS\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -434,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
@@ -445,6 +448,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.michallaskowski.kuiks.SampleiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
@@ -465,6 +470,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.michallaskowski.kuiks.SampleiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -474,9 +480,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../sample-sharedTests/build/bin/iOSSimulator/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = SampleiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,6 +493,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.michallaskowski.kuiks.SampleiOSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleiOSUITests/SampleiOSUITests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -497,9 +507,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3ZT87L5Y5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../sample-sharedTests/build/bin/iOSSimulator/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = SampleiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,6 +520,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.michallaskowski.kuiks.SampleiOSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleiOSUITests/SampleiOSUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
