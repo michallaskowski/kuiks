@@ -10,6 +10,20 @@ import Foundation
 
 class DelegatingTestBase: TestBaseForSelector {
 
+    private static weak var testObjectInstance: NSObject!
+
+    override func setUp() {
+        if Self.testObjectInstance.responds(to: #selector(setUp)) {
+            Self.testObjectInstance.perform(#selector(setUp))
+        }
+    }
+
+    override func tearDown() {
+        if Self.testObjectInstance.responds(to: #selector(tearDown)) {
+            Self.testObjectInstance.perform(#selector(tearDown))
+        }
+    }
+
     // needs to be overriden to return class implementing test methods
     class func testClass() -> AnyClass {
         return NSObject.self
@@ -19,6 +33,7 @@ class DelegatingTestBase: TestBaseForSelector {
         // casting to NSObject.Type needed because:
         // https://stackoverflow.com/questions/55831682/swift-thinks-im-subclassing-nsset-wrongly-but-im-not-subclassing-it-at-all
         let testObject = (testClass() as! NSObject.Type).init()
+        testObjectInstance = testObject
         addInstanceMethod(object: testObject, selector: selector)
     }
 
@@ -37,6 +52,7 @@ class DelegatingTestBase: TestBaseForSelector {
         }
 
         let testObject = (testClass() as! NSObject.Type).init()
+        testObjectInstance = testObject
 
         if let methodList = methodList, methodCount > 0 {
             enumerateCArray(array: methodList, count: methodCount) { i, m in

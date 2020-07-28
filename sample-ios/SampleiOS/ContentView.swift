@@ -30,7 +30,7 @@ struct ContentView: View {
             Button(action: {
                 self.didMakeAction?(.goToNetwork)
             }, label: { Text("Go to GitHub contributors") })
-                .accessibility(identifier: "make_call")
+                .accessibility(identifier: "contributors")
         }
     }
 }
