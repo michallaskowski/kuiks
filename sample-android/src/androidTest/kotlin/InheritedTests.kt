@@ -1,3 +1,6 @@
-import dev.michallaskowski.kuiks.sample.sharedTests.TestExample
+import dev.michallaskowski.kuiks.sample.sharedTests.TestContributorsView
+import dev.michallaskowski.kuiks.sample.sharedTests.TestListBehavior
 
-class InheritedTests: TestExample()
+class InheritedTests: TestListBehavior()
+
+class ContributorsTests: TestContributorsView()
