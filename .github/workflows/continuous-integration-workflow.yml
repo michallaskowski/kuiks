@@ -18,7 +18,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew sample-android:connectedCheck -Pandroid.testInstrumentationRunnerArguments.class=InheritedTests
+          script: ./gradlew sample-android:connectedCheck
 
   ios_tests:
     name: iOS Tests
