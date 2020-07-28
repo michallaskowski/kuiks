@@ -17,7 +17,18 @@
         android:contentDescription="show_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/show_contributors"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/show_contributors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_call"
+        android:contentDescription="@string/make_call_content_description"
+        app:layout_constraintBottom_toBottomOf="@+id/show_list_button"
+        app:layout_constraintLeft_toLeftOf="@+id/show_list_button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/show_list_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

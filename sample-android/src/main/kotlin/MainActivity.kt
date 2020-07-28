@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
             val goToListIntent = Intent(this, ListActivity::class.java)
             startActivity(goToListIntent)
         }
+        show_contributors.setOnClickListener {
+            val goToContributorsIntent = Intent(this, ContributionList::class.java)
+            goToContributorsIntent.putExtras(intent)
+            startActivity(goToContributorsIntent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
