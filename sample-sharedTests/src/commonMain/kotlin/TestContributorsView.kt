@@ -1,18 +1,16 @@
 package dev.michallaskowski.kuiks.sample.sharedTests
 
 import dev.michallaskowski.kuiks.ApplicationWrapper
-import dev.michallaskowski.kuiks.BaseTest
 import dev.michallaskowski.mokttp.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import kotlin.random.Random
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-open class TestContributorsView: BaseTest() {
+open class TestContributorsView {
     private lateinit var app: ApplicationWrapper
     private lateinit var httpServer: HttpServer
 
@@ -30,7 +28,7 @@ open class TestContributorsView: BaseTest() {
     @Test
     fun testStubsHttpResponse() {
         httpServer.router = MockRouter()
-        val port = 8080//Random.nextInt(1025, 10000)
+        val port = 8080 //Random.nextInt(1025, 10000)
         httpServer.start(port)
 
         app.launch(arguments = mapOf( "contributors_url" to "http://localhost:$port" ))
