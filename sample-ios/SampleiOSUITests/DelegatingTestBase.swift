@@ -10,30 +10,16 @@ import Foundation
 
 class DelegatingTestBase: TestBaseForSelector {
 
-    private static weak var testObjectInstance: NSObject!
-
-    override func setUp() {
-        if Self.testObjectInstance.responds(to: #selector(setUp)) {
-            Self.testObjectInstance.perform(#selector(setUp))
-        }
-    }
-
-    override func tearDown() {
-        if Self.testObjectInstance.responds(to: #selector(tearDown)) {
-            Self.testObjectInstance.perform(#selector(tearDown))
-        }
-    }
-
     // needs to be overriden to return class implementing test methods
     class func testClass() -> AnyClass {
         return NSObject.self
     }
 
+    // only called when running one test from Test navigator or sidebar
     override class func registerTest(for selector: Selector) {
         // casting to NSObject.Type needed because:
         // https://stackoverflow.com/questions/55831682/swift-thinks-im-subclassing-nsset-wrongly-but-im-not-subclassing-it-at-all
         let testObject = (testClass() as! NSObject.Type).init()
-        testObjectInstance = testObject
         addInstanceMethod(object: testObject, selector: selector)
     }
 
@@ -51,8 +37,7 @@ class DelegatingTestBase: TestBaseForSelector {
             return
         }
 
-        let testObject = (testClass() as! NSObject.Type).init()
-        testObjectInstance = testObject
+        let testInstance = (testClass() as! NSObject.Type).init()
 
         if let methodList = methodList, methodCount > 0 {
             enumerateCArray(array: methodList, count: methodCount) { i, m in
@@ -60,7 +45,7 @@ class DelegatingTestBase: TestBaseForSelector {
                 let selectorName = NSStringFromSelector(selector)
 
                 if selectorName.hasPrefix("test") {
-                    addInstanceMethod(object: testObject, selector: selector)
+                    addInstanceMethod(object: testInstance, selector: selector)
                 }
             }
         }
@@ -68,7 +53,18 @@ class DelegatingTestBase: TestBaseForSelector {
 
     private static func addInstanceMethod(object: NSObject, selector: Selector) {
         let block: @convention(block) () -> Void = {
+            // setUp
+            if object.responds(to: #selector(setUp)) {
+                object.perform(#selector(setUp))
+            }
+
+            // run test
             object.perform(selector, on: Thread.main, with: nil, waitUntilDone: true)
+
+            // tear down
+            if object.responds(to: #selector(tearDown)) {
+                object.perform(#selector(tearDown))
+            }
         }
         let implementation = imp_implementationWithBlock(block as Any)
         class_addMethod(self, selector, implementation, "v@:")
