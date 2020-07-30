@@ -1,10 +1,5 @@
-//
-//  AutoDiscoveredTests.swift
-//  SampleiOS
-//
 //  Created by Michał Laskowski on 10/02/2020.
-//  Copyright © 2016 Michał Laskowski. All rights reserved.
-//
+//  Copyright © 2020 Michał Laskowski. All rights reserved.
 
 import Foundation
 import NativeTestObjCBase
@@ -12,7 +7,8 @@ import XCTest
 
 open class DelegatingTestBase: TestBaseForSelector {
 
-    // needs to be overriden to return class implementing test methods
+    // needs to be overriden to return class implementing test methods.
+    // Creating generic DelegatingTestBase<TestClass> does not work, tests are not triggered, hence this function
     open class func testClass() -> AnyClass {
         return NSObject.self
     }
