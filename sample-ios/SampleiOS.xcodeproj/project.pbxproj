@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,13 +16,12 @@
 		C141B63223EF0AAE003AAE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C141B63123EF0AAE003AAE22 /* Preview Assets.xcassets */; };
 		C141B63523EF0AAE003AAE22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C141B63323EF0AAE003AAE22 /* LaunchScreen.storyboard */; };
 		C157091223EF4E37003481FB /* SampleiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157091123EF4E37003481FB /* SampleiOSUITests.swift */; };
-		C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C157092823F1FD75003481FB /* TestBaseForSelector.m */; };
-		C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */; };
 		C1B229E324297D580038C011 /* sharedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B229E224297D580038C011 /* sharedTests.framework */; };
 		C1B229E424297D610038C011 /* sharedTests.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = C1B229E224297D580038C011 /* sharedTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1B229E62429980F0038C011 /* ContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B229E52429980F0038C011 /* ContributorsView.swift */; };
 		C1E5C37B24B7B1980050E663 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E5C37A24B7B1980050E663 /* GCDWebServers.framework */; };
 		C1E5C37C24B7B2100050E663 /* GCDWebServers.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = C1E5C37A24B7B1980050E663 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1FD72F924D2D0B300A1012D /* NativeTestBase in Frameworks */ = {isa = PBXBuildFile; productRef = C1FD72F824D2D0B300A1012D /* NativeTestBase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,14 +63,11 @@
 		C157090F23EF4E37003481FB /* SampleiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C157091123EF4E37003481FB /* SampleiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleiOSUITests.swift; sourceTree = "<group>"; };
 		C157091323EF4E37003481FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C157092123F0BE5C003481FB /* SampleiOSUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleiOSUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		C157092723F1FD67003481FB /* TestBaseForSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBaseForSelector.h; sourceTree = "<group>"; };
-		C157092823F1FD75003481FB /* TestBaseForSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBaseForSelector.m; sourceTree = "<group>"; };
-		C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingTestBase.swift; sourceTree = "<group>"; };
 		C1B229E224297D580038C011 /* sharedTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sharedTests.framework; path = "../sample-sharedTests/build/fat-framework/sharedTests.framework"; sourceTree = "<group>"; };
 		C1B229E52429980F0038C011 /* ContributorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorsView.swift; sourceTree = "<group>"; };
 		C1E5C37A24B7B1980050E663 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = ../Carthage/Build/iOS/GCDWebServers.framework; sourceTree = "<group>"; };
 		C1E7FC7223F3448900B11BA3 /* SampleiOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SampleiOS.xctestplan; path = SampleiOS.xcodeproj/SampleiOS.xctestplan; sourceTree = "<group>"; };
+		C1FD72F724D2C80F00A1012D /* NativeTestBase */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NativeTestBase; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FD72F924D2D0B300A1012D /* NativeTestBase in Frameworks */,
 				C1E5C37B24B7B1980050E663 /* GCDWebServers.framework in Frameworks */,
 				C1B229E324297D580038C011 /* sharedTests.framework in Frameworks */,
 			);
@@ -97,6 +94,7 @@
 		C141B61C23EF0AAB003AAE22 = {
 			isa = PBXGroup;
 			children = (
+				C1FD72F724D2C80F00A1012D /* NativeTestBase */,
 				C1E7FC7223F3448900B11BA3 /* SampleiOS.xctestplan */,
 				C141B62723EF0AAB003AAE22 /* SampleiOS */,
 				C157091023EF4E37003481FB /* SampleiOSUITests */,
@@ -144,10 +142,6 @@
 			children = (
 				C157091123EF4E37003481FB /* SampleiOSUITests.swift */,
 				C157091323EF4E37003481FB /* Info.plist */,
-				C157092123F0BE5C003481FB /* SampleiOSUITests-Bridging-Header.h */,
-				C157092723F1FD67003481FB /* TestBaseForSelector.h */,
-				C157092823F1FD75003481FB /* TestBaseForSelector.m */,
-				C157092A23F1FEB1003481FB /* DelegatingTestBase.swift */,
 			);
 			path = SampleiOSUITests;
 			sourceTree = "<group>";
@@ -197,6 +191,9 @@
 				C157091523EF4E37003481FB /* PBXTargetDependency */,
 			);
 			name = SampleiOSUITests;
+			packageProductDependencies = (
+				C1FD72F824D2D0B300A1012D /* NativeTestBase */,
+			);
 			productName = SampleiOSUITests;
 			productReference = C157090F23EF4E37003481FB /* SampleiOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -300,8 +297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C157092923F1FD75003481FB /* TestBaseForSelector.m in Sources */,
-				C157092B23F1FEB1003481FB /* DelegatingTestBase.swift in Sources */,
 				C157091223EF4E37003481FB /* SampleiOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,7 +504,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "SampleiOSUITests/SampleiOSUITests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,7 +534,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "SampleiOSUITests/SampleiOSUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SampleiOS;
@@ -578,6 +571,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1FD72F824D2D0B300A1012D /* NativeTestBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NativeTestBase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C141B61D23EF0AAB003AAE22 /* Project object */;
 }
