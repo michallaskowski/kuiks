@@ -1,5 +1,6 @@
 apply plugin: 'kotlin-multiplatform'
 apply plugin: 'com.android.library'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 29
@@ -36,6 +37,8 @@ kotlin {
 
                     transitiveExport = true
                     export project(':kuiks-core')
+
+                    linkerOpts("-F$projectDir/../Carthage/Build/iOS")
                 }
             }
         }
@@ -47,15 +50,20 @@ kotlin {
         commonMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
             implementation "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0"
+            implementation 'dev.michallaskowski.mokttp:mokttp-common:0.1.0'
+
             api project(':kuiks-core')
         }
 
         iOSMain.dependencies {
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.20.0"
             api project(':kuiks-core')
         }
 
         androidMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
             implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
         }
     }

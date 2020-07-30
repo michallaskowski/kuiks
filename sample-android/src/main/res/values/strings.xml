@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">HelloWorldAndroid</string>
     <string name="action_settings">Settings</string>
+    <string name="show_list">Show list</string>
+    <string name="show_list_content_description">show_list</string>
+    <string name="make_call">Make call</string>
+    <string name="make_call_content_description">contributors</string>
+    <string name="label">label</string>
+    <string name="loading">loading…</string>
 </resources>

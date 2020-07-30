@@ -8,19 +8,30 @@
 
 import SwiftUI
 
+enum ContentViewAction {
+    case goToList
+    case goToNetwork
+}
+
 // navigation works once on simulators till xcode11.4
 // https://stackoverflow.com/questions/59279176/navigationlink-works-only-for-once
-
 struct ContentView: View {
-    var didTapList: (() -> Void)?
+    var didMakeAction: ((ContentViewAction) -> Void)?
 
     var body: some View {
-        Button(action: {
-            self.didTapList?()
-        }, label: {
-            Text("Go to list")
-        }).accessibility(identifier: "show_list")
+        VStack {
+            Button(action: {
+                self.didMakeAction?(.goToList)
+            }, label: { Text("Go to list") })
+                .accessibility(identifier: "show_list")
 
+            Spacer(minLength: 40).fixedSize()
+
+            Button(action: {
+                self.didMakeAction?(.goToNetwork)
+            }, label: { Text("Go to GitHub contributors") })
+                .accessibility(identifier: "contributors")
+        }
     }
 }
 

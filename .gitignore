@@ -22,7 +22,7 @@ out/
 # Gradle files
 .gradle
 .gradle/
-build/
+/build/
 
 # Signing files
 .signing/
@@ -161,3 +161,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+Carthage/Checkouts/
+!Carthage/Build/

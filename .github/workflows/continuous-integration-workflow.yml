@@ -18,7 +18,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew sample-android:connectedCheck -Pandroid.testInstrumentationRunnerArguments.class=InheritedTests
+          script: ./gradlew sample-android:connectedCheck
 
   ios_tests:
     name: iOS Tests
@@ -26,7 +26,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          lfs: true
       - name: Select Xcode 11.3
         run: sudo xcode-select -s /Applications/Xcode_11.3.app
       - name: Tests
-        run: xcodebuild -project sample-ios/SampleiOS.xcodeproj -scheme SampleiOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' test | xcpretty
+        run: set -o pipefail && xcodebuild -project sample-ios/SampleiOS.xcodeproj -scheme SampleiOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' test | xcpretty

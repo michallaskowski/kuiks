@@ -1,29 +1,28 @@
 package dev.michallaskowski.kuiks.sample.sharedTests
 
-import com.laskowski.kuiks.ApplicationWrapper
-import com.laskowski.kuiks.Platform
-import com.laskowski.kuiks.platform
+import dev.michallaskowski.kuiks.ApplicationWrapper
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-open class TestExample {
+open class TestListBehavior {
 
-    val identifier: String
-        get() = if (platform == Platform.iOS) "dev.michallaskowski.kuiks.SampleiOS" else "MainActivity"
+    private lateinit var app: ApplicationWrapper
+
+    @BeforeTest
+    fun setUp() {
+        app = ApplicationWrapper(AppSetup.identifier)
+    }
 
     @Test
     fun testOne() {
-        val app = ApplicationWrapper(identifier)
         app.launch()
     }
 
     @Test
-    fun testEmpty() {
-
-    }
+    fun testEmpty() {}
 
     @Test
     fun testListWithoutScrolling() {
-        val app = ApplicationWrapper(identifier)
         app.launch()
 
         app.elementWithTestId("show_list").tap()
@@ -36,7 +35,6 @@ open class TestExample {
 
     @Test
     fun testListWithScrolling() {
-        val app = ApplicationWrapper(identifier)
         app.launch()
 
         app.elementWithTestId("show_list").tap()

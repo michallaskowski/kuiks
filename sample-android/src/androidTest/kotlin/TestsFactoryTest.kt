@@ -1,4 +1,4 @@
-import dev.michallaskowski.kuiks.sample.sharedTests.TestExample
+import dev.michallaskowski.kuiks.sample.sharedTests.TestListBehavior
 import junit.framework.JUnit4TestAdapter
 import junit.framework.TestSuite
 import org.junit.runner.RunWith
@@ -14,7 +14,10 @@ class TestsFactoryTests {
         @JvmStatic
         fun suite(): TestSuite {
             val testSuite = TestSuite()
-            testSuite.addTest(JUnit4TestAdapter(TestExample::class.java))
+            val testClasses = listOf(TestListBehavior::class, ContributorsTests::class)
+            testClasses.forEach {
+                testSuite.addTest(JUnit4TestAdapter(it.java))
+            }
             return testSuite
         }
     }
