@@ -1,22 +1,20 @@
-//
-//  AutoDiscoveredTests.swift
-//  SampleiOS
-//
 //  Created by Michał Laskowski on 10/02/2020.
-//  Copyright © 2016 Michał Laskowski. All rights reserved.
-//
+//  Copyright © 2020 Michał Laskowski. All rights reserved.
 
 import Foundation
+import NativeTestObjCBase
+import XCTest
 
-class DelegatingTestBase: TestBaseForSelector {
+open class DelegatingTestBase: TestBaseForSelector {
 
-    // needs to be overriden to return class implementing test methods
-    class func testClass() -> AnyClass {
+    // needs to be overriden to return class implementing test methods.
+    // Creating generic DelegatingTestBase<TestClass> does not work, tests are not triggered, hence this function
+    open class func testClass() -> AnyClass {
         return NSObject.self
     }
 
     // only called when running one test from Test navigator or sidebar
-    override class func registerTest(for selector: Selector) {
+    public override class func registerTest(for selector: Selector) {
         // casting to NSObject.Type needed because:
         // https://stackoverflow.com/questions/55831682/swift-thinks-im-subclassing-nsset-wrongly-but-im-not-subclassing-it-at-all
         let testObject = (testClass() as! NSObject.Type).init()
@@ -24,7 +22,7 @@ class DelegatingTestBase: TestBaseForSelector {
     }
 
     // inspired by https://github.com/Quick/Quick/blob/4a4b6c7dd5aac29e0ea8263d1829de006227f59e/Sources/Quick/QuickSpec.swift
-    override class var defaultTestSuite: XCTestSuite {
+    public override class var defaultTestSuite: XCTestSuite {
         registerTestSelectors()
         return super.defaultTestSuite
     }

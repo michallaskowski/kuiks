@@ -1,10 +1,5 @@
-//
-//  TestBase.h
-//  SampleiOS
-//
-//  Created by mlaskowski on 10/02/2020.
-//  Copyright © 2020 Michal Laskowski. All rights reserved.
-//
+//  Created by Michał Laskowski on 10/02/2020.
+//  Copyright © 2020 Michał Laskowski. All rights reserved.
 
 #ifndef TestBase_h
 #define TestBase_h
