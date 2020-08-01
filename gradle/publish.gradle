@@ -10,7 +10,7 @@ publishing {
             name = "kuiks-core"
             description = "Kotlin Multiplatform library for UI testing, " +
                     "wrapping Espresso and XCTest."
-            url = "https://github.com/michallaskowski/mokttp"
+            url = "https://github.com/michallaskowski/kuiks"
             licenses {
                 license {
                     name = 'The Apache License, Version 2.0'
