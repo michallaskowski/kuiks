@@ -1,0 +1,57 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+publishing {
+    publications.all { publication ->
+        def publicationName = publication.name == 'kotlinMultiplatform' ? "common" : publication.name
+        publication.artifactId = "kuiks-core-$publicationName"
+
+        pom {
+            name = "kuiks-core"
+            description = "Kotlin Multiplatform library for UI testing, " +
+                    "wrapping Espresso and XCTest."
+            url = "https://github.com/michallaskowski/kuiks"
+            licenses {
+                license {
+                    name = 'The Apache License, Version 2.0'
+                    url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+            scm {
+                url = "https://github.com/michallaskowski/kuiks.git"
+            }
+            developers {
+                developer {
+                    id = 'michallaskowski'
+                    name = 'Michal Laskowski'
+                    email = 'michal@michallaskowski.dev'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "central"
+            def snapshotRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            def stagingRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            url = version.endsWith('SNAPSHOT') ? snapshotRepoUrl : stagingRepoUrl
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+}
+
+signing {
+    required { isReleaseBuild() }
+    if (isReleaseBuild()) {
+        useInMemoryPgpKeys(System.getenv("PGP_SIGNING_KEY"), System.getenv("PGP_SIGNING_PASSWORD"))
+        sign publishing.publications
+    }
+}
+
+def isReleaseBuild() {
+    return !scmVersion.version.contains("SNAPSHOT")
+}

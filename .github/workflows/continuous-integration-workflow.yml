@@ -30,5 +30,41 @@ jobs:
           lfs: true
       - name: Select Xcode 11.4
         run: sudo xcode-select -s /Applications/Xcode_11.4.app
+      - name: Cache Kotlin Native dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/kotlin-native-macos-*
+            ~/.konan/dependencies
+          key: ${{ runner.os }}-kotlin-native-${{ hashFiles('build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-kotlin-native-
       - name: Tests
         run: set -o pipefail && xcodebuild -project sample-ios/SampleiOS.xcodeproj -scheme SampleiOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.4' test | xcpretty
+
+  publish:
+    name: Publish Snapshot Release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: [android_tests, ios_tests]
+    runs-on:  macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Cache Kotlin Native dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/kotlin-native-macos-*
+            ~/.konan/dependencies
+          key: ${{ runner.os }}-kotlin-native-${{ hashFiles('build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-kotlin-native-
+      - name: Select Xcode 11.4
+        run: sudo xcode-select -s /Applications/Xcode_11.4.app
+      - name: Publish artifacts
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+        run: ./gradlew kuiks-core:publish
