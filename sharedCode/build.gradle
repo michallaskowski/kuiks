@@ -3,6 +3,8 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
 
+apply from: rootProject.file("gradle/publish.gradle")
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -29,10 +31,6 @@ android {
 }
 
 kotlin {
-    android {
-        publishLibraryVariants("release", "debug")
-    }
-
     targets {
         ios('iOS') {
             binaries {
@@ -53,7 +51,9 @@ kotlin {
             }
         }
 
-        fromPreset(presets.android, 'android')
+        fromPreset(presets.android, 'android') {
+            publishLibraryVariants("release", "debug")
+        }
     }
 
     sourceSets {
